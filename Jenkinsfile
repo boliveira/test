@@ -33,4 +33,5 @@ if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')
     return
 }
 
-println "${changeString}"
+println "Changeset size: ${currentBuild.changeSets.size()}"
+println "Items[0]: ${currentBuild.changeSets[0].items[0]}"
