@@ -41,7 +41,20 @@ boolean isBranchIndexingCause() {
 }
 
 // Execute this before anything else, including requesting any time on an agent
-if (isBranchIndexingCause()) {
-    println 'INFO: Build skipped due to trigger being Branch Indexing'
-    return
+//if (isBranchIndexingCause()) {
+//    println 'INFO: Build skipped due to trigger being Branch Indexing'
+//    return
+//}
+
+pipeline {
+ agent any
+    stages {
+        stage('teste') {
+            steps {
+                echo "changeString: ${changeString}"
+                echo "currentBuild.changeSets: ${currentBuild.changeSets}, size: ${currentBuild.changeSets.size()}"
+            }
+        }
+    }
 }
+
