@@ -41,13 +41,12 @@ boolean isBranchIndexingCause() {
     return isBranchIndexing;
 }
 
+def changeSet = getChangeString()
+
+println "Changeset is: ${changeSet}"
 
 // Execute this before anything else, including requesting any time on an agent
 if (isBranchIndexingCause()) {
     println 'INFO: Build skipped due to trigger being Branch Indexing'
     return
 }
-
-def changeSet = getChangeString()
-
-println "Changeset is: ${changeSet}"
