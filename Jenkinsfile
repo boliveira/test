@@ -49,7 +49,7 @@ boolean isBranchIndexingCause() {
 pipeline {
  agent any
     stages {
-        stage('teste') {
+        stage('teste22') {
             steps {
                 echo "changeString: ${changeString}"
                 echo "currentBuild.changeSets: ${currentBuild.changeSets}, size: ${currentBuild.changeSets.size()}"
