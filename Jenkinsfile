@@ -1,3 +1,6 @@
+MAX_COMMIT_MSG_LEN = 1000
+PUBLISH_COMMIT = "DS"
+
 // Generate Changelog
 String getChangeString() {
     String changeString = ''
