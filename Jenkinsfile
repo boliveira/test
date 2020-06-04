@@ -23,27 +23,22 @@ String getChangeString() {
 
 boolean isBranchIndexingCause() {
     
-    boolean isBranchIndexing = false;
-    
     //getBuildCauses does not need additional permissions
     //in comparison to currentBuild.rawBuild that needs
     //to be whitelisted
     def buildCauses = currentBuild.getBuildCauses();
         
-    buildCauses.each { cause -> 
-        
+    if(buildCauses.size() == 1) {
+
+        def cause = buildCauses[0];
+
         //cause is a json object and cause._class is a String
-        if (cause._class.equals("jenkins.branch.BranchIndexingCause")) {
-            isBranchIndexing = true;
-        }
+        return cause._class.equals("jenkins.branch.BranchIndexingCause");
+
     }
-    
-    return isBranchIndexing;
+
+    return false;
 }
-
-def changeSet = getChangeString()
-
-println "Changeset is: ${changeSet}"
 
 // Execute this before anything else, including requesting any time on an agent
 if (isBranchIndexingCause()) {
