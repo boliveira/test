@@ -1,3 +1,5 @@
+echo "Será desta?"
+
 MAX_COMMIT_MSG_LEN = 1000
 PUBLISH_COMMIT = "DS"
 
