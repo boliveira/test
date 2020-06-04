@@ -27,11 +27,11 @@ def getChangeString() {
     return changeString
 }
 
+println "Changeset size: ${currentBuild.changeSets.size()}"
+println "Items[0]: ${currentBuild.changeSets[0].items[0]}"
+
 // Execute this before anything else, including requesting any time on an agent
 if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')) {
     println 'INFO: Build skipped due to trigger being Branch Indexing'
     return
 }
-
-println "Changeset size: ${currentBuild.changeSets.size()}"
-println "Items[0]: ${currentBuild.changeSets[0].items[0]}"
