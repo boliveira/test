@@ -51,15 +51,17 @@ boolean isBranchIndexingCause() {
 //    return
 //}
 
-pipeline {
- agent any
-    stages {
-        stage('teste22') {
-            steps {
-                echo "changeString: ${changeString}"
-                echo "currentBuild.changeSets: ${currentBuild.changeSets}, size: ${currentBuild.changeSets.size()}"
-            }
+node {
+    ws {
+        dir('main') {
+            git("https://github.com/boliveira/test.git")
         }
+        dir('other') {
+            git("https://github.com/boliveira/TestReactNativeApp.git")
+        }
+        archive '**'
     }
+    
+    println "currentBuild.changeSets: ${currentBuild.changeSets}"
 }
 
